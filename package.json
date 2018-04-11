@@ -1,10 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "dev": "node server/index.js",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server/index.js",
-    "format": "prettier --write '**/*.js'",
+    "start": "NODE_ENV=production node server.js",
+    "format": "prettier --write '**/*.{js,css}'",
     "lint": "eslint --fix ."
   },
   "dependencies": {
@@ -12,9 +12,9 @@
     "express": "^4.16.3",
     "glob": "^7.1.2",
     "gray-matter": "^4.0.1",
+    "highlight.js": "^9.12.0",
     "marked": "^0.3.19",
-    "next": "^5.1.0",
-    "next-routes": "^1.4.1",
+    "next": "6.0.0-canary.3",
     "react": "^16.3.0",
     "react-dom": "^16.3.0"
   },

@@ -1,6 +1,12 @@
-import axios from "axios";
-import Link from "next/link";
-import { Component } from "react";
+import axios from 'axios';
+import Link from 'next/link';
+import { Component } from 'react';
+import Layout from '../components/Layout';
+import withCodeHighlights from '../lib/withCodeHighlights';
+
+const PostContents = withCodeHighlights(({ contents }) => (
+  <div className="markup" dangerouslySetInnerHTML={{ __html: contents }} />
+));
 
 export default class Posts extends Component {
   static async getInitialProps({ query }) {
@@ -11,13 +17,15 @@ export default class Posts extends Component {
 
   render() {
     return (
-      <div>
-        <Link href="/posts">
+      <Layout title={this.props.title}>
+        <Link href="/">
           <a>Back</a>
         </Link>
-        <h1>{this.props.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: this.props.content }} />
-      </div>
+        <header className="markup">
+          <h1>{this.props.title}</h1>
+        </header>
+        <PostContents contents={this.props.contents} />
+      </Layout>
     );
   }
 }
