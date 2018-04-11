@@ -1,7 +1,7 @@
 import axios from 'axios';
-import Link from 'next/link';
 import { Component } from 'react';
 import Layout from '../components/Layout';
+import PostList from '../components/PostList';
 
 export default class Posts extends Component {
   static async getInitialProps() {
@@ -15,16 +15,7 @@ export default class Posts extends Component {
   render() {
     return (
       <Layout>
-        Hello, world!
-        <ul>
-          {this.props.posts.map(({ slug, title }) => (
-            <li key={slug}>
-              <Link href={`/post?slug=${slug}`} as={`/posts/${slug}`}>
-                <a>{title}</a>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <PostList posts={this.props.posts} />
       </Layout>
     );
   }
