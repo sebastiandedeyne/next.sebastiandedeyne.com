@@ -22,7 +22,7 @@ export default class Posts extends Component {
       <Layout title={this.props.title}>
         <Header
           title={this.props.title}
-          info={`Published on ${format(this.props.date, 'MMMM Mo, YYYY')}`}
+          info={`Published ${format(this.props.date, 'MMMM Mo, YYYY')}`}
           margin={`${baseline(2)} 0 ${baseline(3)}`}
         />
         <PostContents contents={this.props.contents} />

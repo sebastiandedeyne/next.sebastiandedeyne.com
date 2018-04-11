@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 const express = require('express');
 const next = require('next');
 
@@ -7,7 +9,7 @@ const handle = app.getRequestHandler();
 
 const { getPost, getPosts } = require('./lib/content');
 
-const notFound = res => err => {
+const notFound = res => () => {
   res.status(404).json({ error: 'Not found' });
 };
 
