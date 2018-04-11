@@ -1,6 +1,8 @@
 import axios from 'axios';
-import Link from 'next/link';
 import { Component } from 'react';
+import { format } from 'date-fns';
+import { baseline } from '../lib/style';
+import Header from '../components/Header';
 import Layout from '../components/Layout';
 import withCodeHighlights from '../lib/withCodeHighlights';
 
@@ -18,12 +20,11 @@ export default class Posts extends Component {
   render() {
     return (
       <Layout title={this.props.title}>
-        <Link href="/">
-          <a>Back</a>
-        </Link>
-        <header className="markup">
-          <h1>{this.props.title}</h1>
-        </header>
+        <Header
+          title={this.props.title}
+          info={`Published on ${format(this.props.date, 'MMMM Mo, YYYY')}`}
+          margin={`${baseline(2)} 0 ${baseline(3)}`}
+        />
         <PostContents contents={this.props.contents} />
       </Layout>
     );

@@ -13,10 +13,6 @@ export default class Posts extends Component {
   }
 
   render() {
-    const pages = Array.from({ length: this.props.pages }).map(
-      (_, page) => page + 1
-    );
-
     return (
       <Layout>
         Hello, world!
@@ -25,15 +21,6 @@ export default class Posts extends Component {
             <li key={slug}>
               <Link href={`/post?slug=${slug}`} as={`/posts/${slug}`}>
                 <a>{title}</a>
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <ul>
-          {pages.map(page => (
-            <li key={page}>
-              <Link href={`/posts?page=${page}`}>
-                <a>{page}</a>
               </Link>
             </li>
           ))}

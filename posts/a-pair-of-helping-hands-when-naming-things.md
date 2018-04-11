@@ -26,7 +26,7 @@ I ofter refer to these services when coding or writing, so I made an [Alfred wor
 
 The workflow is available on GitHub and adds two keywords to search for synonyms and associations: `syn` and `assoc`.
 
-Typing `syn dog` in Alfred will direct me to a list of "dog" synonyms like "pup", "mutt" or "tail-wagger". `assoc dog` will provide a broader search, like "kennel", "handler" and "cat".
+Typing `syn dog` in Alfred will direct me to a list of _dog_ synonyms like _pup_, _mutt_ or _tail-wagger_. `assoc dog` will provide a broader search, like _kennel_, _handler_ and _cat_.
 
 ## Keep it simple
 
