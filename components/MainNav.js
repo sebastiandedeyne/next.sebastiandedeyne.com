@@ -10,6 +10,11 @@ export default () => (
         </Link>
       </li>
       <li>
+        <Link href="/talks">
+          <a>Talks</a>
+        </Link>
+      </li>
+      <li>
         <Link href="/about">
           <a>About</a>
         </Link>
@@ -22,7 +27,7 @@ export default () => (
       }
 
       li {
-        margin-left: ${baseline()};
+        margin-left: ${baseline(0.75)};
       }
     `}</style>
   </nav>
