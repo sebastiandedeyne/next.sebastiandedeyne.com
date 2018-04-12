@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import MainNav from '../components/MainNav';
 import {
   baseline,
   color,
@@ -9,10 +10,12 @@ import {
   fontSize
 } from '../lib/style';
 
-export default ({ title, children }) => (
+export default ({ title, children, breadcrumb = title }) => (
   <div className="container">
     <Head>
-      <title>{title || ''}</title>
+      <title>
+        {title ? `${title} — Sebastian De Deyne` : 'Sebastian De Deyne'}
+      </title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <link rel="stylesheet" href="/static/css/hljs.css" />
     </Head>
@@ -22,21 +25,14 @@ export default ({ title, children }) => (
         <Link href="/" prefetch>
           Sebastian De Deyne
         </Link>
+        {breadcrumb && (
+          <span className="title-breadcrumb">
+            <span className="title-breadcrumb-separator">/</span>
+            {breadcrumb}
+          </span>
+        )}
       </strong>
-      <nav className="nav">
-        <ul>
-          <li>
-            <Link href="/" prefetch>
-              <a>Home</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/about">
-              <a>About</a>
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <MainNav />
     </header>
     {children}
 
@@ -62,19 +58,19 @@ export default ({ title, children }) => (
 
       .title {
         color: ${color.red};
-        font-family: ${fontFamily.mono};
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
         font-weight: bold;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
       }
 
-      .nav ul {
-        display: flex;
-        justify-content: flex-end;
+      .title-breadcrumb {
+        color: ${color.gray};
+        font-weight: normal;
       }
 
-      .nav li {
-        margin-left: ${baseline()};
+      .title-breadcrumb-separator {
+        display: inline-block;
+        margin: 0 0.75em;
       }
     `}</style>
   </div>

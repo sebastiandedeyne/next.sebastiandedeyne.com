@@ -14,6 +14,7 @@ export default ({ title, info = null, margin = null }) => (
       h1 {
         font-size: ${fontSize.xxl};
         line-height: 1.3;
+        width: 80%;
       }
 
       aside {

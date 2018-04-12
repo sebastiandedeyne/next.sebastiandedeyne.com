@@ -19,11 +19,11 @@ export default class Posts extends Component {
 
   render() {
     return (
-      <Layout title={this.props.title}>
+      <Layout title={this.props.title} breadcrumb="Blog">
         <Header
           title={this.props.title}
           info={
-            `Published ${format(this.props.date, 'MMMM Mo, YYYY')}` +
+            format(this.props.date, 'MMMM Mo, YYYY') +
             (this.props.era ? ` — ${this.props.era}` : '')
           }
           margin={`0 0 ${baseline(3)}`}
