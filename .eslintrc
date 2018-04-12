@@ -10,8 +10,10 @@
     },
     "env": {
         "browser": true,
-        "es6": true,
-        "node": true
+        "es6": true
+    },
+    "globals": {
+      "require": true
     },
     "rules": {
         "react/display-name": "off",

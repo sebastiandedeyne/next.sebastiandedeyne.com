@@ -1,3 +1,4 @@
+/* eslint-env node */
 /* eslint-disable no-console */
 
 const express = require('express');
@@ -19,7 +20,7 @@ app
     const server = express();
 
     server.get('/api/posts', (req, res) => {
-      getPosts()
+      getPosts({ page: 1, perPage: 10 })
         .then(posts => res.json(posts))
         .catch(notFound(res));
     });

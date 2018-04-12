@@ -1,11 +1,12 @@
 import Link from 'next/link';
+import { format } from 'date-fns';
 import { baseline, color, fontFamily, fontSize } from '../lib/style';
 
-const PostLink = ({ slug, title }) => (
+const PostLink = ({ slug, date, title }) => (
   <Link href={`/post?slug=${slug}`} as={`/posts/${slug}`}>
     <a>
       <strong>{title}</strong>
-      <em>Published yesterday</em>
+      <em>{format(date, 'MMMM Mo, YYYY')}</em>
       <style jsx>{`
         a {
           font-family: ${fontFamily.sans};
@@ -28,7 +29,7 @@ const PostLink = ({ slug, title }) => (
 
 export default ({ posts }) => (
   <div>
-    <h2>2018</h2>
+    <h2>Latest posts</h2>
     <ul>
       {posts.map(post => (
         <li key={post.slug}>
@@ -42,7 +43,7 @@ export default ({ posts }) => (
         font-family: ${fontFamily.sans};
         font-size: ${fontSize.sm};
         letter-spacing: 0.1em;
-        margin-bottom: ${baseline(0.5)};
+        margin-bottom: ${baseline()};
         text-transform: uppercase;
       }
 
@@ -52,4 +53,3 @@ export default ({ posts }) => (
     `}</style>
   </div>
 );
-

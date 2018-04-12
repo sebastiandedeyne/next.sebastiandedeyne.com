@@ -1,6 +1,13 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { baseline, color, containerWidth, global, fontFamily, fontSize } from '../lib/style';
+import {
+  baseline,
+  color,
+  containerWidth,
+  global,
+  fontFamily,
+  fontSize
+} from '../lib/style';
 
 export default ({ title, children }) => (
   <div className="container">
