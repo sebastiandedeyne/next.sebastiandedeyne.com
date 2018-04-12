@@ -1,4 +1,4 @@
-import { baseline, color, fontFamily, fontSize } from '../lib/style';
+import { baseline, color, fontSize } from '../../lib/style';
 
 export default ({ title, info = null, margin = null }) => (
   <header>
@@ -7,7 +7,6 @@ export default ({ title, info = null, margin = null }) => (
 
     <style jsx>{`
       header {
-        font-family: ${fontFamily.sans};
         margin: ${margin || 0};
       }
 

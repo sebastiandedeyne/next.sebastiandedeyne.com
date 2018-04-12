@@ -1,17 +1,14 @@
 import Link from 'next/link';
 import { format } from 'date-fns';
-import { baseline, color, fontFamily, fontSize } from '../lib/style';
+import Pagination from './Pagination';
+import { baseline, color, fontSize } from '../../lib/style';
 
 const PostLink = ({ slug, date, title }) => (
   <Link href={`/post?slug=${slug}`} as={`/posts/${slug}`}>
     <a>
       <strong>{title}</strong>
-      <em>{format(date, 'MMMM Mo, YYYY')}</em>
+      <em>{format(date, 'MMMM Do, YYYY')}</em>
       <style jsx>{`
-        a {
-          font-family: ${fontFamily.sans};
-        }
-
         strong {
           display: block;
           font-size: ${fontSize.lg};
@@ -27,9 +24,9 @@ const PostLink = ({ slug, date, title }) => (
   </Link>
 );
 
-export default ({ posts }) => (
+export default ({ posts, title, pagination }) => (
   <div>
-    <h2>Latest posts</h2>
+    {title && <h2>{title}</h2>}
     <ul>
       {posts.map(post => (
         <li key={post.slug}>
@@ -37,18 +34,26 @@ export default ({ posts }) => (
         </li>
       ))}
     </ul>
+    {pagination && (
+      <nav>
+        <Pagination {...pagination} />
+      </nav>
+    )}
     <style jsx>{`
       h2 {
         color: ${color.gray};
-        font-family: ${fontFamily.sans};
         font-size: ${fontSize.sm};
         letter-spacing: 0.1em;
         margin-bottom: ${baseline()};
         text-transform: uppercase;
       }
 
-      li + li {
+      ul li + li {
         margin-top: ${baseline(0.5)};
+      }
+
+      nav {
+        margin-top: ${baseline(1.5)};
       }
     `}</style>
   </div>

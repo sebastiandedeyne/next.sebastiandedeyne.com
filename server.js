@@ -20,7 +20,7 @@ app
     const server = express();
 
     server.get('/api/posts', (req, res) => {
-      getPosts({ page: 1, perPage: 10 })
+      getPosts({ page: req.query.page || 1, perPage: req.query.perPage || 10 })
         .then(posts => res.json(posts))
         .catch(notFound(res));
     });

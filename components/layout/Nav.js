@@ -1,12 +1,17 @@
 import Link from 'next/link';
-import { baseline } from '../lib/style';
+import { baseline, color, fontSize } from '../../lib/style';
 
 export default () => (
-  <nav className="nav">
+  <nav>
     <ul>
       <li>
         <Link href="/" prefetch>
           <a>Home</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="/posts">
+          <a>Posts</a>
         </Link>
       </li>
       <li>
@@ -21,6 +26,11 @@ export default () => (
       </li>
     </ul>
     <style jsx>{`
+      nav {
+        color: ${color.gray};
+        font-size: ${fontSize.sm};
+      }
+
       ul {
         display: flex;
         justify-content: flex-end;

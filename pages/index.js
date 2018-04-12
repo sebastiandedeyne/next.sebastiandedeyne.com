@@ -1,21 +1,19 @@
 import axios from 'axios';
 import { Component } from 'react';
 import Layout from '../components/Layout';
-import PostList from '../components/PostList';
+import PostList from '../components/posts/PostList';
 
 export default class Posts extends Component {
   static async getInitialProps() {
-    return {
-      posts: await axios
-        .get('http://localhost:3000/api/posts')
-        .then(res => res.data)
-    };
+    return await axios
+      .get('http://localhost:3000/api/posts?perPage=5')
+      .then(res => res.data);
   }
 
   render() {
     return (
       <Layout>
-        <PostList posts={this.props.posts} />
+        <PostList title="Latest posts" posts={this.props.posts} />
       </Layout>
     );
   }

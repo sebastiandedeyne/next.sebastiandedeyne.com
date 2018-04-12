@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { Component } from 'react';
 import { format } from 'date-fns';
+import { Component } from 'react';
 import { baseline } from '../lib/style';
-import Header from '../components/Header';
 import Layout from '../components/Layout';
+import PostHeader from '../components/posts/PostHeader';
 import withCodeHighlights from '../lib/withCodeHighlights';
 
 const PostContents = withCodeHighlights(({ contents }) => (
@@ -20,7 +20,7 @@ export default class Posts extends Component {
   render() {
     return (
       <Layout title={this.props.title} breadcrumb="Blog">
-        <Header
+        <PostHeader
           title={this.props.title}
           info={
             format(this.props.date, 'MMMM Mo, YYYY') +
