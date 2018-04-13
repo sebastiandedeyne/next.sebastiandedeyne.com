@@ -19,7 +19,7 @@ export default class Posts extends Component {
 
   render() {
     return (
-      <Layout title={this.props.title} breadcrumb="Blog">
+      <Layout title={this.props.title} breadcrumb="Posts">
         <PostHeader
           title={this.props.title}
           info={
