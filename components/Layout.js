@@ -1,8 +1,7 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import TopBar from './layout/TopBar';
 import Footer from './layout/Footer';
-import { baseline, global } from '../lib/style';
+import { baseline } from '../lib/style';
 
 const Layout = ({ children, section, title }) => (
   <div>
@@ -20,9 +19,6 @@ const Layout = ({ children, section, title }) => (
       <Footer />
     </div>
 
-    <style jsx global>
-      {global}
-    </style>
     <style jsx>{`
       .holy-grail {
         align-items: stretch;
