@@ -12,7 +12,7 @@ export default class Posts extends Component {
 
   render() {
     return (
-      <Layout title="Posts">
+      <Layout section="/posts">
         <PostList
           title={
             'All posts' +

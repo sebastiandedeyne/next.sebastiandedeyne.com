@@ -1,6 +1,6 @@
 import { baseline, color, fontSize } from '../../lib/style';
 
-export default ({ title, info = null, margin = null }) => (
+const PostHeader = ({ title, info = null, margin = null }) => (
   <header>
     <h1>{title}</h1>
     {info && <aside>{info}</aside>}
@@ -18,9 +18,11 @@ export default ({ title, info = null, margin = null }) => (
 
       aside {
         color: ${color.gray};
-        font-size: ${fontSize.sm};
+        font-size: ${fontSize.xs};
         margin-top: ${baseline(0.75)};
       }
     `}</style>
   </header>
 );
+
+export default PostHeader;

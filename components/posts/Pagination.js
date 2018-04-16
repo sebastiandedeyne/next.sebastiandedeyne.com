@@ -4,7 +4,7 @@ import { color, fontSize } from '../../lib/style';
 const createPageIterator = length =>
   Array.from({ length }).map((_, i) => i + 1);
 
-export default ({ pages, page }) => (
+const Pagination = ({ pages, page }) => (
   <ul>
     {createPageIterator(pages).map(p => (
       <li key={p} aria-selected={p == page ? 'true' : null}>
@@ -16,27 +16,19 @@ export default ({ pages, page }) => (
     <style jsx>{`
       ul {
         display: flex;
+        font-size: ${fontSize.xs};
         color: ${color.gray};
-        font-size: ${fontSize.sm};
       }
 
       li + li {
-        margin-left: 0.5em;
-      }
-
-      a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 2em;
-        height: 2em;
-        line-height: 1;
-        border-radius: 2em;
+        margin-left: 1em;
       }
 
       [aria-selected] a {
-        border: 1px solid ${color.gray};
+        color: ${color.black};
       }
     `}</style>
   </ul>
 );
+
+export default Pagination;

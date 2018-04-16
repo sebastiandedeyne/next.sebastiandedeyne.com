@@ -16,7 +16,7 @@ const PostLink = ({ slug, date, title }) => (
         }
 
         em {
-          font-size: ${fontSize.sm};
+          font-size: ${fontSize.xs};
           color: ${color.gray};
         }
       `}</style>
@@ -24,9 +24,9 @@ const PostLink = ({ slug, date, title }) => (
   </Link>
 );
 
-export default ({ posts, title, pagination }) => (
-  <div>
-    {title && <h2>{title}</h2>}
+const PostList = ({ posts, title, pagination }) => (
+  <section>
+    {title && <h1 className="caps">{title}</h1>}
     <ul>
       {posts.map(post => (
         <li key={post.slug}>
@@ -40,12 +40,8 @@ export default ({ posts, title, pagination }) => (
       </nav>
     )}
     <style jsx>{`
-      h2 {
-        color: ${color.gray};
-        font-size: ${fontSize.sm};
-        letter-spacing: 0.1em;
+      h1 {
         margin-bottom: ${baseline()};
-        text-transform: uppercase;
       }
 
       ul li + li {
@@ -56,5 +52,7 @@ export default ({ posts, title, pagination }) => (
         margin-top: ${baseline(1.5)};
       }
     `}</style>
-  </div>
+  </section>
 );
+
+export default PostList;

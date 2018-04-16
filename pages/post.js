@@ -19,16 +19,23 @@ export default class Posts extends Component {
 
   render() {
     return (
-      <Layout title={this.props.title} breadcrumb="Posts">
-        <PostHeader
-          title={this.props.title}
-          info={
-            format(this.props.date, 'MMMM Mo, YYYY') +
-            (this.props.era ? ` — ${this.props.era}` : '')
+      <Layout title={this.props.title} section="/posts">
+        <div className="inner">
+          <PostHeader
+            title={this.props.title}
+            info={
+              format(this.props.date, 'MMMM Mo, YYYY') +
+              (this.props.era ? ` — ${this.props.era}` : '')
+            }
+            margin={`0 0 ${baseline(3)}`}
+          />
+          <PostContents contents={this.props.contents} />
+        </div>
+        <style jsx>{`
+          .inner {
+            max-width: 38em;
           }
-          margin={`0 0 ${baseline(3)}`}
-        />
-        <PostContents contents={this.props.contents} />
+        `}</style>
       </Layout>
     );
   }

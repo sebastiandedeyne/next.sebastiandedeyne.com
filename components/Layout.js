@@ -1,10 +1,10 @@
 import Head from 'next/head';
-import Nav from './layout/Nav';
-import Title from './layout/Title';
+import Link from 'next/link';
+import TopBar from './layout/TopBar';
 import Footer from './layout/Footer';
-import { baseline, containerWidth, global } from '../lib/style';
+import { baseline, global } from '../lib/style';
 
-export default ({ title, children, breadcrumb = title }) => (
+const Layout = ({ children, section, title }) => (
   <div>
     <Head>
       <title>
@@ -14,14 +14,9 @@ export default ({ title, children, breadcrumb = title }) => (
       <link rel="stylesheet" href="/static/css/hljs.css" />
     </Head>
 
-    <div className="wrapper">
-      <div className="content">
-        <header>
-          <Title breadcrumb={breadcrumb} />
-          <Nav />
-        </header>
-        <main>{children}</main>
-      </div>
+    <TopBar section={section} title={title} />
+    <div className="holy-grail">
+      <main className="wrapper">{children}</main>
       <Footer />
     </div>
 
@@ -29,34 +24,19 @@ export default ({ title, children, breadcrumb = title }) => (
       {global}
     </style>
     <style jsx>{`
-      .wrapper {
+      .holy-grail {
         align-items: stretch;
         display: flex;
         flex-direction: column;
         min-height: 100vh;
       }
 
-      .content {
-        flex: 1;
-      }
-
-      header,
       main {
-        margin: 0 auto;
-        max-width: ${containerWidth};
-        padding: 0 ${baseline(0.5)};
-      }
-
-      header {
-        display: flex;
-        justify-content: space-between;
-        padding-top: ${baseline(0.5)};
-        margin-bottom: ${baseline(3)};
-      }
-
-      main {
-        margin-bottom: ${baseline(4)};
+        flex-grow: 1;
+        margin: ${baseline(5)} auto ${baseline(3)};
       }
     `}</style>
   </div>
 );
+
+export default Layout;
