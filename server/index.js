@@ -51,6 +51,13 @@ app
 
     // Site
 
+    // Redirect old post permalinks with years to the new scheme
+    [2016, 2017, 2018].forEach(year => {
+      server.get(`/posts/${year}/:slug`, (req, res) => {
+        res.redirect(`/posts/${req.params.slug}`);
+      });
+    });
+
     server.get('/posts/:slug', (req, res) => {
       app.render(req, res, '/post', { slug: req.params.slug });
     });
