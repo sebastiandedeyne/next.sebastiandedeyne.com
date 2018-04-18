@@ -1,25 +1,22 @@
 {
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "prettier"
-    ],
-    "parserOptions": {
-        "sourceType": "module",
-        "ecmaVersion": 2018
-    },
-    "env": {
-        "browser": true,
-        "es6": true
-    },
-    "globals": {
-      "require": true
-    },
-    "rules": {
-        "react/display-name": "off",
-        "react/no-find-dom-node": "off",
-        "react/no-unescaped-entities": "off",
-        "react/prop-types": "off",
-        "react/react-in-jsx-scope": "off"
-    }
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier"
+  ],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2018
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "rules": {
+    "react/display-name": "off",
+    "react/no-find-dom-node": "off",
+    "react/no-unescaped-entities": "off",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off"
+  }
 }

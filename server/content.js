@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 const marked = require('marked');
 const matter = require('gray-matter');
 const { promisify } = require('util');
