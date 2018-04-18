@@ -6,9 +6,9 @@ import Layout from '../components/Layout';
 import PostList from '../components/posts/PostList';
 
 export default class Posts extends Component {
-  static async getInitialProps() {
+  static async getInitialProps({ req }) {
     return await axios
-      .get('http://localhost:3000/api/posts?perPage=5')
+      .get(`${req ? 'http://localhost:3000' : ''}/api/posts?perPage=5`)
       .then(res => res.data);
   }
 

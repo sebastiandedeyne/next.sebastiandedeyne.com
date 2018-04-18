@@ -11,9 +11,9 @@ const PostContents = withCodeHighlights(({ contents }) => (
 ));
 
 export default class Posts extends Component {
-  static async getInitialProps({ query }) {
+  static async getInitialProps({ query, req }) {
     return await axios
-      .get(`http://localhost:3000/api/posts/${query.slug}`)
+      .get(`${req ? 'http://localhost:3000' : ''}/api/posts/${query.slug}`)
       .then(res => res.data);
   }
 
