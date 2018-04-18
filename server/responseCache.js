@@ -1,4 +1,7 @@
-module.exports = function responseCache({ debug = false } = {}) {
+module.exports = function responseCache({
+  enabled = true,
+  debug = false
+} = {}) {
   const cachedResponseBodies = {};
 
   function log(message) {
@@ -8,11 +11,17 @@ module.exports = function responseCache({ debug = false } = {}) {
     }
   }
 
+  if (!enabled) {
+    return function(req, res, next) {
+      next();
+    };
+  }
+
   return function(req, res, next) {
     const cachedResponseBody = cachedResponseBodies[req.originalUrl];
 
     if (cachedResponseBody) {
-      log(`Response cache HIT:  ${req.originalUrl}`);
+      log(`> Response cache HIT:   ${req.originalUrl}`);
 
       res.send(cachedResponseBody);
       return;
@@ -21,9 +30,12 @@ module.exports = function responseCache({ debug = false } = {}) {
     const send = res.send.bind(res);
 
     res.send = body => {
-      log(`Response cache MISS: ${req.originalUrl}`);
+      if (res.statusCode === 200) {
+        log(`> Response cache WRITE: ${req.originalUrl}`);
 
-      cachedResponseBodies[req.originalUrl] = body;
+        cachedResponseBodies[req.originalUrl] = body;
+      }
+
       send(body);
     };
 

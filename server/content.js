@@ -1,6 +1,8 @@
+const Rss = require('rss');
 const marked = require('marked');
 const matter = require('gray-matter');
 const { promisify } = require('util');
+const { format } = require('date-fns');
 
 const glob = promisify(require('glob'));
 const readFile = promisify(require('fs').readFile);
@@ -8,9 +10,7 @@ const readFile = promisify(require('fs').readFile);
 function getPosts({ page, perPage }) {
   return glob('./posts/*.md').then(files => {
     const identifiers = files
-      .map(path => {
-        return path.replace('./posts/', '').split('.')[1];
-      })
+      .map(path => path.replace('./posts/', '').split('.')[1])
       .reverse();
 
     const pages = Math.ceil(identifiers.length / perPage);
@@ -54,4 +54,31 @@ function getPostContents(path) {
   });
 }
 
-module.exports = { getPosts, getPost };
+function getFeed() {
+  return getPosts({ page: 1, perPage: 10 }).then(({ posts }) => {
+    const feed = new Rss({
+      title: 'Sebastian De Deyne',
+      description: 'description',
+      feed_url: 'https://sebastiandedeyne.com/feed',
+      site_url: 'https://sebastiandedeyne.com',
+      managingEditor: 'sebastiandedeyne@gmail.com',
+      webMaster: 'sebastiandedeyne@gmail.com',
+      copyright: `${format(new Date(), 'YYYY')} Sebastian De Deyne`,
+      language: 'en',
+      pubDate: posts[0] ? format(posts[0].date) : null
+    });
+
+    posts.forEach(post => {
+      feed.item({
+        title: post.title,
+        description: post.contents,
+        url: `https://sebastiandedeyne.com/posts/${post.slug}`,
+        date: format(post.date)
+      });
+    });
+
+    return feed.xml();
+  });
+}
+
+module.exports = { getPosts, getPost, getFeed };
