@@ -7,7 +7,7 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-const responseCache = require('./responseCache')({ dev });
+const responseCache = require('./responseCache')();
 
 const { getPost, getPosts } = require('./content');
 

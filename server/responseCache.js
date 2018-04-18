@@ -1,8 +1,8 @@
-module.exports = function responseCache({ dev = false } = {}) {
+module.exports = function responseCache({ debug = false } = {}) {
   const cachedResponseBodies = {};
 
   function log(message) {
-    if (dev) {
+    if (debug) {
       /* eslint-disable-next-line no-console */
       console.log(message);
     }

@@ -1,7 +1,7 @@
 import Layout from '../components/Layout';
 import { baseline, color, fontFamily, fontSize } from '../lib/style';
 
-export default () => (
+const About = () => (
   <Layout title="About" section="/about">
     <section>
       <aside className="sidebar">
@@ -100,3 +100,5 @@ export default () => (
     `}</style>
   </Layout>
 );
+
+export default About;

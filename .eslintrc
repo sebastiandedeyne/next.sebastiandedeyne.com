@@ -13,8 +13,6 @@
     "es6": true
   },
   "rules": {
-    "react/display-name": "off",
-    "react/no-find-dom-node": "off",
     "react/no-unescaped-entities": "off",
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off"
