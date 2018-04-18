@@ -25,7 +25,7 @@ module.exports = function responseCache({ dev = false } = {}) {
 
       cachedResponseBodies[req.originalUrl] = body;
       send(body);
-    }
+    };
 
     next();
   };
