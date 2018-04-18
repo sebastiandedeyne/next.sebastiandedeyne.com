@@ -1,13 +1,14 @@
-import axios from 'axios';
 import { Component } from 'react';
+import { getPosts } from '../lib/api';
 import Layout from '../components/Layout';
 import PostList from '../components/posts/PostList';
 
 export default class Posts extends Component {
   static async getInitialProps({ query, req }) {
-    return await axios
-      .get(`${req ? 'http://localhost:3000' : ''}/api/posts?page=${query.page || 1}`)
-      .then(res => res.data);
+    return await getPosts({
+      page: query.page || 1,
+      isServerRequest: !!req
+    });
   }
 
   render() {

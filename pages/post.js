@@ -1,6 +1,6 @@
-import axios from 'axios';
 import { format } from 'date-fns';
 import { Component } from 'react';
+import { getPost } from '../lib/api';
 import { baseline } from '../lib/style';
 import Layout from '../components/Layout';
 import PostHeader from '../components/posts/PostHeader';
@@ -12,9 +12,10 @@ const PostContents = withCodeHighlights(({ contents }) => (
 
 export default class Posts extends Component {
   static async getInitialProps({ query, req }) {
-    return await axios
-      .get(`${req ? 'http://localhost:3000' : ''}/api/posts/${query.slug}`)
-      .then(res => res.data);
+    return await getPost({
+      slug: query.slug,
+      isServerRequest: !!req
+    });
   }
 
   render() {

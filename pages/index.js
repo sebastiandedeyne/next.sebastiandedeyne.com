@@ -1,15 +1,16 @@
-import axios from 'axios';
 import Link from 'next/link';
 import { Component } from 'react';
-import { baseline, fontFamily, fontSize } from '../lib/style';
 import Layout from '../components/Layout';
 import PostList from '../components/posts/PostList';
+import { baseline, fontFamily, fontSize } from '../lib/style';
+import { getPosts } from '../lib/api';
 
 export default class Posts extends Component {
   static async getInitialProps({ req }) {
-    return await axios
-      .get(`${req ? 'http://localhost:3000' : ''}/api/posts?perPage=5`)
-      .then(res => res.data);
+    return await getPosts({
+      perPage: 5,
+      isServerRequest: !!req
+    });
   }
 
   render() {
