@@ -198,6 +198,16 @@ export default class MyDocument extends Document {
             color: ${color.gray};
             margin-bottom: ${baseline()};
           }
+
+          #nprogress .bar {
+            background: ${color.red};
+            position: fixed;
+            z-index: 999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+          }
         `}</style>
       </html>
     );
