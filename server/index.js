@@ -23,8 +23,6 @@ app
   .then(() => {
     const server = express();
 
-    // API
-
     server.use('/api', responseCache);
 
     server.get('/api/posts', (req, res) => {
@@ -40,16 +38,12 @@ app
         .catch(notFound(res));
     });
 
-    // Feed
-
     server.get('/feed', responseCache, (req, res) => {
       getFeed().then(feed => {
         res.set('Content-Type', 'text/xml');
         res.send(feed);
       });
     });
-
-    // Site
 
     // Redirect old post permalinks with years to the new scheme
     [2016, 2017, 2018].forEach(year => {
@@ -65,8 +59,6 @@ app
     server.get('*', (req, res) => {
       return handle(req, res);
     });
-
-    // Run
 
     server.listen(3000, err => {
       if (err) {

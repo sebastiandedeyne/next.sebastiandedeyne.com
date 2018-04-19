@@ -1,19 +1,16 @@
 import Head from 'next/head';
-import TopBar from './layout/TopBar';
 import Footer from './layout/Footer';
 import { baseline } from '../lib/style';
+import Navigation from './layout/Navigation';
 
 const Layout = ({ children, section, title }) => (
   <div>
     <Head>
-      <title>
-        {title ? `${title} — Sebastian De Deyne` : 'Sebastian De Deyne'}
-      </title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <link rel="stylesheet" href="/static/css/hljs.css" />
     </Head>
 
-    <TopBar section={section} title={title} />
+    <Navigation section={section} title={title} />
     <div className="holy-grail">
       <main className="wrapper">{children}</main>
       <Footer />

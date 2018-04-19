@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Link from 'next/link';
 import { Component, createRef } from 'react';
 import { baseline, color, fontSize } from '../../lib/style';
@@ -68,6 +69,13 @@ export default class TopBar extends Component {
   render() {
     return (
       <header className="wrapper" ref={this.headerRef}>
+        <Head>
+          <title>
+            {this.state.currentSection.href !== '/'
+              ? `${this.state.currentSection.title} — Sebastian De Deyne`
+              : 'Sebastian De Deyne'}
+          </title>
+        </Head>
         <strong className="caps">
           <Link href="/" prefetch>
             <a className="title">Sebastian De Deyne</a>
