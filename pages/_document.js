@@ -40,6 +40,7 @@ export default class MyDocument extends Document {
             font: inherit;
             vertical-align: baseline;
             box-sizing: border-box;
+            color: green !important;
           }
 
           ::selection {
