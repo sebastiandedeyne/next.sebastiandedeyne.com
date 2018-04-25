@@ -18,11 +18,17 @@ export default class MyDocument extends Document {
   render() {
     return (
       <html lang="en">
-        <Head />
+        <Head>
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <link rel="alternate" type="application/rss+xml" href="https://sebastiandedeyne.com/feed" title="Sebastian De Deyne" />
+          <link rel="stylesheet" href="/static/css/hljs.css" />
+        </Head>
+
         <body>
           <Main />
           <NextScript />
         </body>
+
         <style jsx global>{`
           *,
           *:before,
