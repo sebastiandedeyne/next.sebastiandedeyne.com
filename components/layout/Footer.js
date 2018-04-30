@@ -20,13 +20,21 @@ const Footer = () => (
       footer {
         color: ${color.gray};
         font-size: ${fontSize.xs};
+        line-height: 2;
         padding-top: ${baseline(0.5)};
         padding-bottom: ${baseline(0.5)};
       }
 
       .wrapper {
-        display: flex;
-        justify-content: space-between;
+        text-align: center;
+      }
+
+      @media(min-width: 450px) {
+        .wrapper {
+          display: flex;
+          justify-content: space-between;
+          text-align: left;
+        }
       }
     `}</style>
   </footer>
